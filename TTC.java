@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class C {
+public class TTC {
     public static void main(String[] args) {
         int u, t1 = 90, t2 = 90,t=0;// Random values
         char k = '?', m = '~';
