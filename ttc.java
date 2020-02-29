@@ -77,6 +77,7 @@ public class C {
                 break;
             }
         }
+        r.close();
     }
 
     static boolean check(int a, int b, char[][] xy) {
