@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 public class TTC {
     public static void main(String[] args) {
-        int u, t1 = 90, t2 = 90,t=0;// Random values
+        int input = -1, t1 = 90, t2 = 90, t = 0;// Random values
+        int[] occupied = new int[9];
         char k = '?', m = '~';
+        boolean mad = true;
         char[][] xy = new char[3][3];
         xy[0][0] = '1';
         xy[0][1] = '2';
@@ -15,12 +17,22 @@ public class TTC {
         xy[2][1] = '8';
         xy[2][2] = '9';
         Scanner r = new Scanner(System.in);
-        System.out.println("Enter name for player 1");
-        String p1 = r.next();
-        System.out.println("Enter name for player 2");
-        String p2 = r.next();
+        System.out.println("Do you want to play with Computer(y/n)?");
+        char ans = r.next().charAt(0);
+        String p1, p2;
+        if (ans == 'y' || ans == 'Y') {
+            System.out.println("What is player's name?");
+            p1 = r.next();
+            p2 = "Computerji";
+        } else {
+            System.out.println("Enter name for player 1");
+            p1 = r.next();
+            System.out.println("Enter name for player 2");
+            p2 = r.next();
+        }
         System.out.println("for " + p1 + " X or O ??");
         char rw = r.next().charAt(0);
+
         if (rw == 'o' || rw == 'O') {
             k = 'O';
             m = 'X';
@@ -28,9 +40,12 @@ public class TTC {
             k = 'X';
             m = 'O';
         }
+
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
+
         for (int l = 1; l <= 9; l++) {
+
             if (l % 2 == 1) {
                 s = p1;
                 System.out.println(s + " Enter your position");
@@ -38,24 +53,33 @@ public class TTC {
                 s = p2;
                 System.out.println(s + " Enter your position");
             }
-            u = r.nextInt();
+            while (mad) {
+                input = r.nextInt();
+
+                if (input > 9 || input < 1) {
+                    System.out.println("Invalid Input\nEnter again");
+                    mad = true;
+                } else {
+                    if (occupied[input - 1] == 1 || occupied[input - 1] == 2) {
+                        System.out.println("\n" + s + " beta masti nai!\n\nEnter again");
+                        mad = true;
+                    } else {
+                        occupied[input - 1] = (2 - l % 2);
+                        mad = false;
+                    }
+                }
+            }
             for (int i = 0; i < 3; i++) {
+
                 for (int j = 0; j < 3; j++) {
                     System.out.print("  ");
-                    if ((i) * 3 + j + 1 == u) {
+                    if ((i) * 3 + j + 1 == input) {
                         t1 = i;
                         t2 = j;
-                        if (xy[i][j] == k || xy[i][j] == m) {
-                            t = 1;
-                            l--;
-                        } 
-                        else {
-                            if (l % 2 == 1) {
-                                xy[i][j] = k;
-                            } else {
-                                xy[i][j] = m;
-                            }
-                            t=0;
+                        if (l % 2 == 1) {
+                            xy[i][j] = k;
+                        } else {
+                            xy[i][j] = m;
                         }
                     }
                     System.out.print(xy[i][j]);
@@ -69,13 +93,11 @@ public class TTC {
                     System.out.print("\n");
                 }
             }
-            if(t==1){
-                System.out.println("\n"+s+" beta masti nai!\n");
-            }
             if (check(t1, t2, xy)) {
                 System.out.println("\n\n" + s + " won!!\nCongratulations");
                 break;
             }
+            mad = true;
         }
         r.close();
     }
@@ -95,4 +117,8 @@ public class TTC {
         }
         return false;
     }
+
+    // static int put(char[][] xy) {
+    //     
+    // }
 }
