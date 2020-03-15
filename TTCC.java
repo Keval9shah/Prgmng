@@ -31,6 +31,7 @@ public class TTCC {
             k = 'X';
             m = 'O';
         }
+        Put p = new Put();
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
         for (int l = 1; l <= 9; l++) {
@@ -38,12 +39,15 @@ public class TTCC {
                 s = p1;
                 System.out.println(s + " Enter your position");
             } else {
-                s=p2;
-                Put p = new Put();
-                input = p.put(occupied);
-                mad=false;
+                s = p2;
+                if (l == 2 && occupied[4] == 0) {
+                    input = 5;
+                } else {
+                    input = p.put(occupied);
+                }
+                mad = false;
                 System.out.println("Time for Computer to Enter\n");
-                occupied[input-1]=2;
+                occupied[input - 1] = 2;
             }
             while (mad) {
                 input = r.nextInt();
@@ -64,13 +68,6 @@ public class TTCC {
                     }
                 }
             }
-
-// %0 >
-// %1 <
-// <0 || >9 ^_ 
-// 
-//             
-
             mad = true;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -98,8 +95,7 @@ public class TTCC {
             if (check(t1, t2, xy)) {
                 System.out.println("\n\n" + s + " won!!\nCongratulations");
                 break;
-            }
-            else if (l==9) {
+            } else if (l == 9) {
                 System.out.println("\n---Draw!\n");
             }
         }
