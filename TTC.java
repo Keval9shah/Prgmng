@@ -1,12 +1,14 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class TTC {
     public static void main(String[] args) {
-        int input = -1, t1 = 90, t2 = 90, t = 0;// Random values
-        int[] occupied = new int[9];
+        int input = 12, t1 = 90, t2 = 90;// Random values
         char k = '?', m = '~';
-        boolean mad = true;
+        Boolean mad = true;
         char[][] xy = new char[3][3];
+        int[] occupied = new int[9];
+        Arrays.fill(occupied, 0);
         xy[0][0] = '1';
         xy[0][1] = '2';
         xy[0][2] = '3';
@@ -17,22 +19,12 @@ public class TTC {
         xy[2][1] = '8';
         xy[2][2] = '9';
         Scanner r = new Scanner(System.in);
-        System.out.println("Do you want to play with Computer(y/n)?");
-        char ans = r.next().charAt(0);
-        String p1, p2;
-        if (ans == 'y' || ans == 'Y') {
-            System.out.println("What is player's name?");
-            p1 = r.next();
-            p2 = "Computerji";
-        } else {
-            System.out.println("Enter name for player 1");
-            p1 = r.next();
-            System.out.println("Enter name for player 2");
-            p2 = r.next();
-        }
+        System.out.println("Enter name for player 1");
+        String p1 = r.next();
+        System.out.println("Enter name for player 2");
+        String p2 = r.next();
         System.out.println("for " + p1 + " X or O ??");
         char rw = r.next().charAt(0);
-
         if (rw == 'o' || rw == 'O') {
             k = 'O';
             m = 'X';
@@ -40,12 +32,9 @@ public class TTC {
             k = 'X';
             m = 'O';
         }
-
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
-
         for (int l = 1; l <= 9; l++) {
-
             if (l % 2 == 1) {
                 s = p1;
                 System.out.println(s + " Enter your position");
@@ -55,22 +44,25 @@ public class TTC {
             }
             while (mad) {
                 input = r.nextInt();
-
-                if (input > 9 || input < 1) {
-                    System.out.println("Invalid Input\nEnter again");
+                if (input < 1 || input > 9) {
+                    System.out.println(s + " beta masti nai\nEnter input again\n");
                     mad = true;
                 } else {
-                    if (occupied[input - 1] == 1 || occupied[input - 1] == 2) {
-                        System.out.println("\n" + s + " beta masti nai!\n\nEnter again");
+                    if (occupied[input - 1] != 0) {
+                        System.out.println(s + " beta masti nai\nEnter input again\n");
                         mad = true;
                     } else {
-                        occupied[input - 1] = (2 - l % 2);
+                        if (l % 2 == 1) {
+                            occupied[input - 1] = 1;
+                        } else {
+                            occupied[input - 1] = 2;
+                        }
                         mad = false;
                     }
                 }
             }
+            mad = true;
             for (int i = 0; i < 3; i++) {
-
                 for (int j = 0; j < 3; j++) {
                     System.out.print("  ");
                     if ((i) * 3 + j + 1 == input) {
@@ -97,7 +89,9 @@ public class TTC {
                 System.out.println("\n\n" + s + " won!!\nCongratulations");
                 break;
             }
-            mad = true;
+            else if (l==9) {
+                System.out.println("\n---Draw\nBoth of U r Losers\n");
+            }
         }
         r.close();
     }
@@ -117,8 +111,4 @@ public class TTC {
         }
         return false;
     }
-
-    // static int put(char[][] xy) {
-    //     
-    // }
 }
