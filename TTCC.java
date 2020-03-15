@@ -43,6 +43,7 @@ public class TTCC {
                 input = p.put(occupied);
                 mad=false;
                 System.out.println("Time for Computer to Enter\n");
+                occupied[input-1]=2;
             }
             while (mad) {
                 input = r.nextInt();
@@ -99,7 +100,7 @@ public class TTCC {
                 break;
             }
             else if (l==9) {
-                System.out.println("\n---Draw\n");
+                System.out.println("\n---Draw!\n");
             }
         }
         r.close();
