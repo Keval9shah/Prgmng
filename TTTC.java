@@ -21,8 +21,7 @@ public class TTC {
         Scanner r = new Scanner(System.in);
         System.out.println("Enter name for player 1");
         String p1 = r.next();
-        System.out.println("Enter name for player 2");
-        String p2 = r.next();
+        String p2 = "Computer";
         System.out.println("for " + p1 + " X or O ??");
         char rw = r.next().charAt(0);
         if (rw == 'o' || rw == 'O') {
@@ -39,8 +38,8 @@ public class TTC {
                 s = p1;
                 System.out.println(s + " Enter your position");
             } else {
-                s = p2;
-                System.out.println(s + " Enter your position");
+                // input=put();
+                // mad=false;
             }
             while (mad) {
                 input = r.nextInt();
@@ -61,6 +60,13 @@ public class TTC {
                     }
                 }
             }
+
+// %0 >
+// %1 <
+// <0 || >9 ^_ 
+// 
+//             
+
             mad = true;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -90,7 +96,7 @@ public class TTC {
                 break;
             }
             else if (l==9) {
-                System.out.println("\n---Draw\nBoth of U r Losers\n");
+                System.out.println("\n---Draw\n");
             }
         }
         r.close();
