@@ -24,6 +24,8 @@ public class TTCC {
         String p2 = "Computer";
         System.out.println("for " + p1 + " X or O ??");
         char rw = r.next().charAt(0);
+        System.out.println("Want Computer to go first(y/n)??");
+        
         if (rw == 'o' || rw == 'O') {
             k = 'O';
             m = 'X';
@@ -40,11 +42,8 @@ public class TTCC {
                 System.out.println(s + " Enter your position");
             } else {
                 s = p2;
-                if (l == 2 && occupied[4] == 0) {
-                    input = 5;
-                } else {
-                    input = p.put(occupied);
-                }
+                ;
+                input = p.put(occupied);
                 mad = false;
                 System.out.println("Time for Computer to Enter\n");
                 occupied[input - 1] = 2;
@@ -103,17 +102,20 @@ public class TTCC {
     }
 
     static boolean check(int a, int b, char[][] xy) {
+
+        // Horizontal
         if (xy[a][0] == xy[a][1] && xy[a][1] == xy[a][2]) {
             return true;
         }
-        if (xy[0][b] == xy[1][b] && xy[1][b] == xy[2][b]) {
+        // Vertical
+        else if (xy[0][b] == xy[1][b] && xy[1][b] == xy[2][b]) {
             return true;
         }
-        if (a == b) {
-            return xy[0][0] == xy[1][1] && xy[1][1] == xy[2][2];
-        }
-        if (a + b == 2) {
-            return xy[0][2] == xy[1][1] && xy[1][1] == xy[2][0];
+        // Cross
+        else if (xy[0][0] == xy[1][1] && xy[1][1] == xy[2][2]) {
+            return true;
+        } else if (xy[0][2] == xy[1][1] && xy[1][1] == xy[2][0]) {
+            return true;
         }
         return false;
     }
