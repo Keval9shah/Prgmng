@@ -23,9 +23,7 @@ public class TTCC {
         String p1 = r.next();
         String p2 = "Computer";
         System.out.println("for " + p1 + " X or O ??");
-        char rw = r.next().charAt(0);
-        System.out.println("Want Computer to go first(y/n)??");
-        
+        char rw = r.next().charAt(0);        
         if (rw == 'o' || rw == 'O') {
             k = 'O';
             m = 'X';
@@ -42,7 +40,6 @@ public class TTCC {
                 System.out.println(s + " Enter your position");
             } else {
                 s = p2;
-                ;
                 input = p.put(occupied);
                 mad = false;
                 System.out.println("Time for Computer to Enter\n");

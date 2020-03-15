@@ -56,8 +56,10 @@ public class Put {
                 }
 
             }
+        }
+        for (int i = 0; i < 9; i++){
             //Check Win
-            else if (o[i] == 1) {
+            if (o[i] == 1) {
                 // Horizontal
                 if (i + 1 < 9 && o[i + 1] == 1) {
                     // o[i+2]==0 && i%3==0
