@@ -9,6 +9,7 @@ public class TTC {
         char[][] xy = new char[3][3];
         int[] occupied = new int[9];
         Arrays.fill(occupied, 0);
+        String p1 = "Motu", p2 = "Patlu";
         xy[0][0] = '1';
         xy[0][1] = '2';
         xy[0][2] = '3';
@@ -19,28 +20,75 @@ public class TTC {
         xy[2][1] = '8';
         xy[2][2] = '9';
         Scanner r = new Scanner(System.in);
-        System.out.println("Enter name for player 1");
-        String p1 = r.next();
-        System.out.println("Enter name for player 2");
-        String p2 = r.next();
-        System.out.println("for " + p1 + " X or O ??");
-        char rw = r.next().charAt(0);
-        if (rw == 'o' || rw == 'O') {
+        System.out.println("Want to play with Computer(y/n)??");
+        char comp = 'n', frst = 'n';
+        comp = r.next().charAt(0);
+        // Computer Choice
+        if (comp == 'y') {
+            System.out.println("Want Computer to play first(y/n)??");
+            frst = r.next().charAt(0);
+            System.out.println("Enter name for player");
+            if (frst == 'y') {
+                p1 = "Computer";
+                p2 = r.next();
+            } else {
+                p1 = r.next();
+                p2 = "Computer";
+            }
+        } else {
+            System.out.println("Enter name for player 1");
+            p1 = r.next();
+            System.out.println("Enter name for player 2");
+            p2 = r.next();
+        }
+        if (comp == 'n' && frst == 'n') {
+            System.out.println("for " + p1 + " X or O ??");
+        } else {
+            System.out.println("for " + p2 + " X or O ??");
+        }
+        char XorO = r.next().charAt(0);
+        if (comp == 'y' && frst == 'y') {
+            if (XorO == 'o' || XorO == 'O') {
+                m = 'O';
+                k = 'X';
+            } else if (XorO == 'x' || XorO == 'X') {
+                m = 'X';
+                k = 'O';
+            }
+        } else if (XorO == 'o' || XorO == 'O') {
             k = 'O';
             m = 'X';
-        } else if (rw == 'x' || rw == 'X') {
+        } else if (XorO == 'x' || XorO == 'X') {
             k = 'X';
             m = 'O';
         }
+        Put p = new Put();
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
         for (int l = 1; l <= 9; l++) {
+            // Input
             if (l % 2 == 1) {
-                s = p1;
-                System.out.println(s + " Enter your position");
+                if (frst == 'y') {
+                    s = p1;
+                    input = p.put(occupied,frst);
+                    mad = false;
+                    System.out.println("Time for Computer to Enter\n");
+                    occupied[input - 1] = 1;
+                } else {
+                    s = p1;
+                    System.out.println(s + " Enter your position");
+                }
             } else {
-                s = p2;
-                System.out.println(s + " Enter your position");
+                if (comp == 'y' && frst == 'n') {
+                    s = p2;
+                    input = p.put(occupied,frst);
+                    mad = false;
+                    System.out.println("Time for Computer to Enter\n");
+                    occupied[input - 1] = 2;
+                } else {
+                    s = p2;
+                    System.out.println(s + " Enter your position");
+                }
             }
             while (mad) {
                 input = r.nextInt();
@@ -49,7 +97,7 @@ public class TTC {
                     mad = true;
                 } else {
                     if (occupied[input - 1] != 0) {
-                        System.out.println(s + " beta masti nai\nEnter input again\n");
+                        System.out.println(s + " betaaa masti naii\nEnter input again\n");
                         mad = true;
                     } else {
                         if (l % 2 == 1) {
@@ -88,26 +136,29 @@ public class TTC {
             if (check(t1, t2, xy)) {
                 System.out.println("\n\n" + s + " won!!\nCongratulations");
                 break;
+            } else if (l == 9) {
+                System.out.println("\n---Draw!\n");
             }
-            else if (l==9) {
-                System.out.println("\n---Draw\nBoth of U r Losers\n");
-            }
+            System.out.println(input+"-->>"+occupied[input-1]);
         }
         r.close();
     }
 
     static boolean check(int a, int b, char[][] xy) {
+
+        // Horizontal
         if (xy[a][0] == xy[a][1] && xy[a][1] == xy[a][2]) {
             return true;
         }
-        if (xy[0][b] == xy[1][b] && xy[1][b] == xy[2][b]) {
+        // Vertical
+        else if (xy[0][b] == xy[1][b] && xy[1][b] == xy[2][b]) {
             return true;
         }
-        if (a == b) {
-            return xy[0][0] == xy[1][1] && xy[1][1] == xy[2][2];
-        }
-        if (a + b == 2) {
-            return xy[0][2] == xy[1][1] && xy[1][1] == xy[2][0];
+        // Cross
+        else if (xy[0][0] == xy[1][1] && xy[1][1] == xy[2][2]) {
+            return true;
+        } else if (xy[0][2] == xy[1][1] && xy[1][1] == xy[2][0]) {
+            return true;
         }
         return false;
     }

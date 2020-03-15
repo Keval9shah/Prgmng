@@ -54,13 +54,11 @@ public class Put {
                         return 1;
                     }
                 }
-
             }
         }
         for (int i = 0; i < 9; i++) {
             // Check Win
             if (o[i] == 3-x) {
-                System.out.println(i+"||||");
                 // Horizontal
                 if (i + 1 < 9 && o[i + 1] == 3-x) {
                     // o[i+2]==0 && i%3==0
@@ -123,7 +121,6 @@ public class Put {
                 return 9;
             }
             for (int i = 0; i < 9; i++) {
-                System.out.println("not suppsd t b hr");
                 if (o[i] == 0) {
                     return i + 1;
                 }
