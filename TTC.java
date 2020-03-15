@@ -34,17 +34,19 @@ public class TTC {
             } else {
                 p1 = r.next();
                 p2 = "Computer";
+                frst='n';
             }
         } else {
             System.out.println("Enter name for player 1");
             p1 = r.next();
             System.out.println("Enter name for player 2");
             p2 = r.next();
+            comp='n';
         }
-        if (comp == 'n' && frst == 'n') {
-            System.out.println("for " + p1 + " X or O ??");
-        } else {
+        if (comp == 'y' && frst == 'y') {
             System.out.println("for " + p2 + " X or O ??");
+        } else {
+            System.out.println("for " + p1 + " X or O ??");
         }
         char XorO = r.next().charAt(0);
         if (comp == 'y' && frst == 'y') {
@@ -70,7 +72,7 @@ public class TTC {
             if (l % 2 == 1) {
                 if (frst == 'y') {
                     s = p1;
-                    input = p.put(occupied,frst);
+                    input = p.put(occupied, frst);
                     mad = false;
                     System.out.println("Time for Computer to Enter\n");
                     occupied[input - 1] = 1;
@@ -81,7 +83,7 @@ public class TTC {
             } else {
                 if (comp == 'y' && frst == 'n') {
                     s = p2;
-                    input = p.put(occupied,frst);
+                    input = p.put(occupied, frst);
                     mad = false;
                     System.out.println("Time for Computer to Enter\n");
                     occupied[input - 1] = 2;
@@ -133,13 +135,15 @@ public class TTC {
                     System.out.print("\n");
                 }
             }
-            if (check(t1, t2, xy)) {
+            if (check(t1, t2, xy) && s != "Computer") {
                 System.out.println("\n\n" + s + " won!!\nCongratulations");
+                break;
+            } else if (check(t1, t2, xy)) {
+                System.out.println("\n\n" + s + " won!!\n");
                 break;
             } else if (l == 9) {
                 System.out.println("\n---Draw!\n");
             }
-            System.out.println(input+"-->>"+occupied[input-1]);
         }
         r.close();
     }
