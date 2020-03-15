@@ -13,7 +13,6 @@ public class Put {
         for (int i = 0; i < 9; i++) {
             // Win
             if (o[i] == x) {
-                // f=n then 2
                 // Horizontal
                 if (i + 1 < 9 && o[i + 1] == x) {
                     if (i + 2 < 9 && o[i + 2] == 0 && i % 3 == 0) {
@@ -61,7 +60,6 @@ public class Put {
             if (o[i] == 3 - x) {
                 // Horizontal
                 if (i + 1 < 9 && o[i + 1] == 3 - x) {
-                    // o[i+2]==0 && i%3==0
                     if (o[i + 2] == 0 && i % 3 == 0) {
                         return i + 3;
                     } else if (i - 1 >= 0 && o[i - 1] == 0 && i % 3 == 1) {
