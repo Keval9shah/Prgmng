@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class TTC {
+public class TTCC {
     public static void main(String[] args) {
         int input = 12, t1 = 90, t2 = 90;// Random values
         char k = '?', m = '~';
@@ -38,8 +38,11 @@ public class TTC {
                 s = p1;
                 System.out.println(s + " Enter your position");
             } else {
-                // input=put();
-                // mad=false;
+                s=p2;
+                Put p = new Put();
+                input = p.put(occupied);
+                mad=false;
+                System.out.println("Time for Computer to Enter\n");
             }
             while (mad) {
                 input = r.nextInt();
