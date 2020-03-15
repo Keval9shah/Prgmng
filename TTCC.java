@@ -9,6 +9,7 @@ public class TTCC {
         char[][] xy = new char[3][3];
         int[] occupied = new int[9];
         Arrays.fill(occupied, 0);
+        String p1 = "Motu", p2 = "Patlu";
         xy[0][0] = '1';
         xy[0][1] = '2';
         xy[0][2] = '3';
@@ -19,15 +20,45 @@ public class TTCC {
         xy[2][1] = '8';
         xy[2][2] = '9';
         Scanner r = new Scanner(System.in);
-        System.out.println("Enter name for player 1");
-        String p1 = r.next();
-        String p2 = "Computer";
-        System.out.println("for " + p1 + " X or O ??");
-        char rw = r.next().charAt(0);        
-        if (rw == 'o' || rw == 'O') {
+        System.out.println("Want to play with Computer(y/n)??");
+        char comp = 'n', frst = 'n';
+        comp = r.next().charAt(0);
+        // Computer Choice
+        if (comp == 'y') {
+            System.out.println("Want Computer to play first(y/n)??");
+            frst = r.next().charAt(0);
+            System.out.println("Enter name for player");
+            if (frst == 'y') {
+                p1 = "Computer";
+                p2 = r.next();
+            } else {
+                p1 = r.next();
+                p2 = "Computer";
+            }
+        } else {
+            System.out.println("Enter name for player 1");
+            p1 = r.next();
+            System.out.println("Enter name for player 2");
+            p2 = r.next();
+        }
+        if (comp == 'n' && frst == 'n') {
+            System.out.println("for " + p1 + " X or O ??");
+        } else {
+            System.out.println("for " + p2 + " X or O ??");
+        }
+        char XorO = r.next().charAt(0);
+        if (comp == 'y' && frst == 'y') {
+            if (XorO == 'o' || XorO == 'O') {
+                m = 'O';
+                k = 'X';
+            } else if (XorO == 'x' || XorO == 'X') {
+                m = 'X';
+                k = 'O';
+            }
+        } else if (XorO == 'o' || XorO == 'O') {
             k = 'O';
             m = 'X';
-        } else if (rw == 'x' || rw == 'X') {
+        } else if (XorO == 'x' || XorO == 'X') {
             k = 'X';
             m = 'O';
         }
@@ -35,15 +66,29 @@ public class TTCC {
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
         for (int l = 1; l <= 9; l++) {
+            // Input
             if (l % 2 == 1) {
-                s = p1;
-                System.out.println(s + " Enter your position");
+                if (frst == 'y') {
+                    s = p1;
+                    input = p.put(occupied,frst);
+                    mad = false;
+                    System.out.println("Time for Computer to Enter\n");
+                    occupied[input - 1] = 1;
+                } else {
+                    s = p1;
+                    System.out.println(s + " Enter your position");
+                }
             } else {
-                s = p2;
-                input = p.put(occupied);
-                mad = false;
-                System.out.println("Time for Computer to Enter\n");
-                occupied[input - 1] = 2;
+                if (comp == 'y' && frst == 'n') {
+                    s = p2;
+                    input = p.put(occupied,frst);
+                    mad = false;
+                    System.out.println("Time for Computer to Enter\n");
+                    occupied[input - 1] = 2;
+                } else {
+                    s = p2;
+                    System.out.println(s + " Enter your position");
+                }
             }
             while (mad) {
                 input = r.nextInt();
@@ -52,7 +97,7 @@ public class TTCC {
                     mad = true;
                 } else {
                     if (occupied[input - 1] != 0) {
-                        System.out.println(s + " beta masti nai\nEnter input again\n");
+                        System.out.println(s + " betaaa masti naii\nEnter input again\n");
                         mad = true;
                     } else {
                         if (l % 2 == 1) {
@@ -94,6 +139,7 @@ public class TTCC {
             } else if (l == 9) {
                 System.out.println("\n---Draw!\n");
             }
+            System.out.println(input+"-->>"+occupied[input-1]);
         }
         r.close();
     }
