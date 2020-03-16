@@ -34,14 +34,14 @@ public class TTC {
             } else {
                 p1 = r.next();
                 p2 = "Computer";
-                frst='n';
+                frst = 'n';
             }
         } else {
             System.out.println("Enter name for player 1");
             p1 = r.next();
             System.out.println("Enter name for player 2");
             p2 = r.next();
-            comp='n';
+            comp = 'n';
         }
         if (comp == 'y' && frst == 'y') {
             System.out.println("for " + p2 + " X or O ??");
@@ -68,6 +68,12 @@ public class TTC {
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
         for (int l = 1; l <= 9; l++) {
+            // Delay
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
             // Input
             if (l % 2 == 1) {
                 if (frst == 'y') {
@@ -75,6 +81,12 @@ public class TTC {
                     input = p.put(occupied, frst);
                     mad = false;
                     System.out.println("Time for Computer to Enter\n");
+                    // Delay
+                    try {
+                        Thread.sleep(900);
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
                     occupied[input - 1] = 1;
                 } else {
                     s = p1;
@@ -86,6 +98,12 @@ public class TTC {
                     input = p.put(occupied, frst);
                     mad = false;
                     System.out.println("Time for Computer to Enter\n");
+                    // Delay
+                    try {
+                        Thread.sleep(900);
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
                     occupied[input - 1] = 2;
                 } else {
                     s = p2;
