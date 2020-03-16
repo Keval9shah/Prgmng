@@ -68,12 +68,6 @@ public class TTC {
         System.out.println("Enter position according to this layout\n1   2   3\n4   5   6\n7   8   9");
         String s;
         for (int l = 1; l <= 9; l++) {
-            // Delay
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
             // Input
             if (l % 2 == 1) {
                 if (frst == 'y') {
@@ -81,12 +75,6 @@ public class TTC {
                     input = p.put(occupied, frst);
                     mad = false;
                     System.out.println("Time for Computer to Enter\n");
-                    // Delay
-                    try {
-                        Thread.sleep(900);
-                    } catch (InterruptedException ex) {
-                        Thread.currentThread().interrupt();
-                    }
                     occupied[input - 1] = 1;
                 } else {
                     s = p1;
@@ -98,12 +86,6 @@ public class TTC {
                     input = p.put(occupied, frst);
                     mad = false;
                     System.out.println("Time for Computer to Enter\n");
-                    // Delay
-                    try {
-                        Thread.sleep(900);
-                    } catch (InterruptedException ex) {
-                        Thread.currentThread().interrupt();
-                    }
                     occupied[input - 1] = 2;
                 } else {
                     s = p2;
