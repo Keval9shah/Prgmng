@@ -74,7 +74,7 @@ public class TTC {
                     s = p1;
                     input = p.put(occupied, frst);
                     mad = false;
-                    System.out.println("Time for Computer to Enter\n");
+                    System.out.println("Time for Computer to Enter");
                     occupied[input - 1] = 1;
                 } else {
                     s = p1;
@@ -85,7 +85,7 @@ public class TTC {
                     s = p2;
                     input = p.put(occupied, frst);
                     mad = false;
-                    System.out.println("Time for Computer to Enter\n");
+                    System.out.println("Time for Computer to Enter");
                     occupied[input - 1] = 2;
                 } else {
                     s = p2;
@@ -135,8 +135,32 @@ public class TTC {
                     System.out.print("\n");
                 }
             }
+            String w=".";
             if (check(t1, t2, xy) && s != "Computer") {
                 System.out.println("\n\n" + s + " won!!\nCongratulations");
+                if (s == p1) {
+                    w = p2 + "'s a Loser!!  ";
+                } else {
+                    w = p1 + "'s a Loser!!  ";
+                }
+                for (int c = 0; c < w.length(); c++) {
+                    System.out.print(w.charAt(c));
+                    // Delay
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+                for (int c = 0; c < w.length(); c++) {
+                    System.out.print("\b \b");
+                    // Delay
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
                 break;
             } else if (check(t1, t2, xy)) {
                 System.out.println("\n\n" + s + " won!!\n");
