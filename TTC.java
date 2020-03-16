@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class TTC {
-    //push exp
     public static void main(String[] args) {
         int input = 12, t1 = 90, t2 = 90;// Random values
         char k = '?', m = '~';
