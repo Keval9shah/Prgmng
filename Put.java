@@ -100,7 +100,9 @@ public class Put {
                 }
             }
         }
-        if (o[0] == 3 - x && o[8] == 0) {
+        if (o[4] == 0) {
+            return 5;
+        } else if (o[0] == 3 - x && o[8] == 0) {
             return 9;
         } else if (o[2] == 3 - x && o[6] == 0) {
             return 7;
