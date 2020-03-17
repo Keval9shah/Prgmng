@@ -21,7 +21,7 @@ public class TTC {
         xy[2][2] = '9';
         Scanner r = new Scanner(System.in);
         System.out.println("Want to play with Computer(y/n)??");
-        char comp = 'n', frst = 'n';
+        char comp = 'n', frst = 'n',in='.';
         comp = r.next().charAt(0);
         // Computer Choice
         if (comp == 'y') {
@@ -93,7 +93,8 @@ public class TTC {
                 }
             }
             while (mad) {
-                input = r.nextInt();
+                in = r.next().charAt(0);
+                input = (int)in-48;
                 if (input < 1 || input > 9) {
                     System.out.println(s + " beta masti nai\nEnter input again\n");
                     mad = true;
