@@ -69,7 +69,7 @@ public class Put {
                     return i + 2;
                 }
                 // Vertical
-                else if (i + 3 < 9 && o[i + 3] == 3 - x) {
+                if (i + 3 < 9 && o[i + 3] == 3 - x) {
                     if (i + 6 < 9 && o[i + 6] == 0) {
                         return i + 7;
                     } else if (i - 3 >= 0 && o[i - 3] == 0) {
