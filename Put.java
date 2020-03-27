@@ -60,7 +60,7 @@ public class Put {
             if (o[i] == 3 - x) {
                 // Horizontal
                 if (i + 1 < 9 && o[i + 1] == 3 - x) {
-                    if (o[i + 2] == 0 && i % 3 == 0) {
+                    if (i % 3 == 0 && o[i + 2] == 0) {
                         return i + 3;
                     } else if (i - 1 >= 0 && o[i - 1] == 0 && i % 3 == 1) {
                         return i;
