@@ -4,22 +4,26 @@ public class Encrypt_Decrypt {
 
     public static void main(String[] args) {
         Scanner n = new Scanner(System.in);
-        System.out.println("Encrypt  -->  1\t\tOR\nDecrypt  -->  2");
-        String y = n.nextLine();
-        if (y.charAt(0) == '1' && y.length() == 1) {
-            System.out.println("Enter a String");
-            String x1 = n.nextLine();
-            Encrypt_Decrypt e = new Encrypt_Decrypt();
-            String Enc = e.e(x1);
-            System.out.println("Encrypted Text:\n\n" + Enc);
-        } else if (y.charAt(0) == '2' && y.length() == 1) {
-            System.out.println("Enter a String");
-            String x2 = n.nextLine();
-            Encrypt_Decrypt d = new Encrypt_Decrypt();
-            String Dec = d.d(x2);
-            System.out.println("Decrypted Text:\n\n" + Dec);
-        } else {
-            System.out.println("What??");
+        while (true) {
+            System.out.println("Encrypt  -->  1\t\tOR\nDecrypt  -->  2\t\tOR\nExit  -->  3");
+            String y = n.nextLine();
+            if (y.charAt(0) == '1' && y.length() == 1) {
+                System.out.println("Enter a String");
+                String x1 = n.nextLine();
+                Encrypt_Decrypt e = new Encrypt_Decrypt();
+                String Enc = e.e(x1);
+                System.out.println("Encrypted Text:\n\n" + Enc + "\n");
+            } else if (y.charAt(0) == '2' && y.length() == 1) {
+                System.out.println("Enter a String");
+                String x2 = n.nextLine();
+                Encrypt_Decrypt d = new Encrypt_Decrypt();
+                String Dec = d.d(x2);
+                System.out.println("Decrypted Text:\n\n" + Dec + "\n");
+            } else if (y.charAt(0) == '3' && y.length() == 1) {
+                break;
+            } else {
+                System.out.println("What??");
+            }
         }
         n.close();
     }
