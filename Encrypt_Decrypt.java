@@ -35,9 +35,7 @@ public class Encrypt_Decrypt {
         for (int i = 0; i < len1; i++) {
             for (int j = 0; j < len1; j++) {
                 if (count < len) {
-                    if (x.charAt(count) == 'z') {
-                        new_st[i][j] = 'a';
-                    } else if (count % 2 == 0) {
+                    if (count % 2 == 0) {
                         new_st[i][j] = (char) ((int) x.charAt(count) + 1);
                     } else {
                         new_st[i][j] = (char) ((int) x.charAt(count) + 2);
@@ -82,9 +80,7 @@ public class Encrypt_Decrypt {
         for (int i = 0; i < len1; i++) {
             for (int j = 0; j < len1; j++) {
                 if (new_st[i][j] != '\0') {
-                    if (new_st[i][j] == 'a') {
-                        new_str += 'z';
-                    } else if (count % 2 == 0) {
+                    if (count % 2 == 0) {
                         new_str += (char) ((int) new_st[i][j] - 1);
                     } else {
                         new_str += (char) ((int) new_st[i][j] - 2);
