@@ -1,28 +1,37 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Encrypt_Decrypt {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner n = new Scanner(System.in);
         while (true) {
             System.out.println("Encrypt  -->  1\t\tOR\nDecrypt  -->  2\t\tOR\nExit  -->  3");
             String y = n.nextLine();
-            if (y.charAt(0) == '1' && y.length() == 1) {
-                System.out.println("Enter a String");
-                String x1 = n.nextLine();
-                Encrypt_Decrypt e = new Encrypt_Decrypt();
-                String Enc = e.e(x1);
-                System.out.println("Encrypted Text:\n\n" + Enc + "\n");
-            } else if (y.charAt(0) == '2' && y.length() == 1) {
-                System.out.println("Enter a String");
-                String x2 = n.nextLine();
-                Encrypt_Decrypt d = new Encrypt_Decrypt();
-                String Dec = d.d(x2);
-                System.out.println("Decrypted Text:\n\n" + Dec + "\n");
-            } else if (y.charAt(0) == '3' && y.length() == 1) {
-                break;
-            } else {
-                System.out.println("What??");
+            if (y.length() != 0) {
+                if (y.charAt(0) == '1' && y.length() == 1) {
+                    System.out.println("Enter a String");
+                    String x1 = n.nextLine();
+                    Encrypt_Decrypt e = new Encrypt_Decrypt();
+                    e.StoreData(x1);
+                    String Enc = e.e(x1);
+                    System.out.println("Encrypted Text:\n\n" + Enc + "\n");
+                } else if (y.charAt(0) == '2' && y.length() == 1) {
+                    System.out.println("Enter a String");
+                    String x2 = n.nextLine();
+                    Encrypt_Decrypt d = new Encrypt_Decrypt();
+                    String Dec = d.d(x2);
+                    System.out.println("Decrypted Text:\n\n" + Dec + "\n");
+                } else if (y.charAt(0) == '3' && y.length() == 1) {
+                    break;
+                } else {
+                    System.out.println("What??");
+                }
             }
         }
         n.close();
@@ -94,5 +103,23 @@ public class Encrypt_Decrypt {
             }
         }
         return new_str;
+    }
+
+    void StoreData(String txt) throws IOException {
+        File f = new File("C:\\Made_by_Keval/data.txt");
+
+        File dir = new File("C:\\Made_by_Keval");
+        dir.mkdir();
+        Path path = FileSystems.getDefault().getPath("C:\\Made_by_Keval");
+        Files.setAttribute(path, "dos:hidden", true);
+        try {
+            FileWriter wrtr = new FileWriter(f, true);
+            wrtr.append(txt);
+            wrtr.append('\n');
+            wrtr.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
