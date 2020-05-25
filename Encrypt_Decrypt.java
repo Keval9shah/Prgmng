@@ -14,18 +14,19 @@ public class Encrypt_Decrypt {
             System.out.println("Encrypt  -->  1\t\tOR\nDecrypt  -->  2\t\tOR\nExit  -->  3");
             String y = n.nextLine();
             if (y.length() != 0) {
+                Encrypt_Decrypt eod = new Encrypt_Decrypt();
+                String x1 = "";
                 if (y.charAt(0) == '1' && y.length() == 1) {
                     System.out.println("Enter a String");
-                    String x1 = n.nextLine();
-                    Encrypt_Decrypt e = new Encrypt_Decrypt();
-                    e.StoreData(x1);
-                    String Enc = e.e(x1);
+                    x1 = n.nextLine();
+                    eod.StoreData(x1);
+                    String Enc = eod.e(x1);
                     System.out.println("Encrypted Text:\n\n" + Enc + "\n");
                 } else if (y.charAt(0) == '2' && y.length() == 1) {
                     System.out.println("Enter a String");
-                    String x2 = n.nextLine();
-                    Encrypt_Decrypt d = new Encrypt_Decrypt();
-                    String Dec = d.d(x2);
+                    x1 = n.nextLine();
+                    String Dec = eod.d(x1);
+                    eod.StoreData(Dec);
                     System.out.println("Decrypted Text:\n\n" + Dec + "\n");
                 } else if (y.charAt(0) == '3' && y.length() == 1) {
                     break;
