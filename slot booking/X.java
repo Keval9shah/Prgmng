@@ -31,9 +31,11 @@ public class X {
                 System.out.println("Do you have Time Machine?");
                 System.out.println("Bcuz You wanna book slot in past");
             } else if (intmdt == 1) {
-                System.out.println("Done!!\nOn " + date + " at " + time);
+                System.out.println("Done!!\nOn " + date + " at " + time + " o'clock");
             } else if (intmdt == 3) {
                 System.out.println("Date format incorrect");
+            } else if (intmdt == 4) {
+                System.out.println("Sorry!  Library is occupied by another user at the same time\nPick other time");
             } else {
                 System.out.println("Sorry\nNo slot available on that day & that time");
             }

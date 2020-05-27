@@ -1,11 +1,9 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.*;
 
 public class D {
 
@@ -72,23 +70,40 @@ public class D {
                 dir.mkdir();
                 Path path = FileSystems.getDefault().getPath("C:\\LSB");
                 Files.setAttribute(path, "dos:hidden", true);
-                try {
-                    FileWriter wrtr = new FileWriter(f, true);
-                    wrtr.append(nm);
-                    wrtr.append(',');
-                    wrtr.append(y);
-                    wrtr.append(',');
-                    wrtr.append(z);
-                    wrtr.append(',');
-                    wrtr.append(x);
-                    wrtr.append(',');
-                    wrtr.append(String.valueOf(t));
-                    wrtr.append('\n');
-                    wrtr.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+
+                //
+                String line = "";
+
+                // parsing a CSV file into BufferedReader class constructor
+                BufferedReader br = new BufferedReader(new FileReader("C:\\LSB/data.csv"));
+                while ((line = br.readLine()) != null) // returns a Boolean value
+                {
+                    String[] user = line.split(","); // use comma as separator
+                    if (Integer.valueOf(user[3]) == dat[2]) {
+                        if (Integer.valueOf(user[2]) == dat[1]) {
+                            if (Integer.valueOf(user[1]) == dat[0]) {
+                                if (Integer.valueOf(user[4]) == t) {
+                                    return 4;
+                                }
+                            }
+                        }
+                    }
                 }
+                //
+
+                FileWriter wrtr = new FileWriter(f, true);
+                wrtr.append(nm);
+                wrtr.append(',');
+                wrtr.append(y);
+                wrtr.append(',');
+                wrtr.append(z);
+                wrtr.append(',');
+                wrtr.append(x);
+                wrtr.append(',');
+                wrtr.append(String.valueOf(t));
+                wrtr.append('\n');
+                wrtr.close();
+
             }
         } else {
             return 3;
