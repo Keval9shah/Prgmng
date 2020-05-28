@@ -48,6 +48,9 @@ public class D {
             String sH = "" + strDate.charAt(11) + strDate.charAt(12);
             boolean bln = true;
             if (Integer.valueOf(sY) >= dat[2]) {
+                if (Integer.valueOf(sY) == dat[2]) {
+                    bln = false;
+                }
                 if (Integer.valueOf(sM) >= dat[1]) {
                     if (Integer.valueOf(sD) >= dat[0]) {
                         if (Integer.valueOf(sH) >= t) {
@@ -59,52 +62,51 @@ public class D {
                 } else if (bln) {
                     return 2;
                 }
-            } else {
-                // File stuff
+            }
+            // File stuff
 
-                //
+            //
 
-                File f = new File("C:\\LSB/data.csv");
+            File f = new File("C:\\LSB/data.csv");
 
-                File dir = new File("C:\\LSB");
-                dir.mkdir();
-                Path path = FileSystems.getDefault().getPath("C:\\LSB");
-                Files.setAttribute(path, "dos:hidden", true);
+            File dir = new File("C:\\LSB");
+            dir.mkdir();
+            Path path = FileSystems.getDefault().getPath("C:\\LSB");
+            Files.setAttribute(path, "dos:hidden", true);
 
-                //
-                String line = "";
+            //
+            String line = "";
 
-                // parsing a CSV file into BufferedReader class constructor
-                BufferedReader br = new BufferedReader(new FileReader("C:\\LSB/data.csv"));
-                while ((line = br.readLine()) != null) // returns a Boolean value
-                {
-                    String[] user = line.split(","); // use comma as separator
-                    if (Integer.valueOf(user[3]) == dat[2]) {
-                        if (Integer.valueOf(user[2]) == dat[1]) {
-                            if (Integer.valueOf(user[1]) == dat[0]) {
-                                if (Integer.valueOf(user[4]) == t) {
-                                    return 4;
-                                }
+            // parsing a CSV file into BufferedReader class constructor
+            BufferedReader br = new BufferedReader(new FileReader("C:\\LSB/data.csv"));
+            while ((line = br.readLine()) != null) // returns a Boolean value
+            {
+                String[] user = line.split(","); // use comma as separator
+                if (Integer.valueOf(user[3]) == dat[2]) {
+                    if (Integer.valueOf(user[2]) == dat[1]) {
+                        if (Integer.valueOf(user[1]) == dat[0]) {
+                            if (Integer.valueOf(user[4]) == t) {
+                                return 4;
                             }
                         }
                     }
                 }
-                //
-
-                FileWriter wrtr = new FileWriter(f, true);
-                wrtr.append(nm);
-                wrtr.append(',');
-                wrtr.append(y);
-                wrtr.append(',');
-                wrtr.append(z);
-                wrtr.append(',');
-                wrtr.append(x);
-                wrtr.append(',');
-                wrtr.append(String.valueOf(t));
-                wrtr.append('\n');
-                wrtr.close();
-
             }
+            //
+
+            FileWriter wrtr = new FileWriter(f, true);
+            wrtr.append(nm);
+            wrtr.append(',');
+            wrtr.append(y);
+            wrtr.append(',');
+            wrtr.append(z);
+            wrtr.append(',');
+            wrtr.append(x);
+            wrtr.append(',');
+            wrtr.append(String.valueOf(t));
+            wrtr.append('\n');
+            wrtr.close();
+
         } else {
             return 3;
         }
