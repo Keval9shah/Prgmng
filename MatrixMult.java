@@ -17,23 +17,24 @@ class MatrixMult {
             }
         }
         System.out.println("Enter matrix B");
-        System.out.println("Enter n for nxm B matrix");
-
-        int t = sc.nextInt();
-        System.out.println("Enter m for nxm B matrix");
-        int q = sc.nextInt();
-        int[][] B = new int[t][q];
-        for (int i = 0; i < t; i++) {
+        int[][] B = new int[m][n];
+        for (int i = 0; i < m; i++) {
             System.out.println("Row " + (i + 1));
-            for (int l = 0; l < q; l++) {
+            for (int l = 0; l < n; l++) {
                 System.out.println("Element " + (l + 1));
-                A[i][l] = sc.nextInt();
+                B[i][l] = sc.nextInt();
             }
         }
-        if (m != t || n != q) {
-            System.out.println("These matrices can't be multiplies");
-        } else {
-
+        int[][] C = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                C[i][j] = 0;
+                for (int x = 0; x < m; x++) {
+                    C[i][j] = C[i][j] + A[i][x] * B[x][j];
+                }
+                System.out.print(C[i][j] + "  ");
+            }
+            System.out.println();
         }
     }
 }
