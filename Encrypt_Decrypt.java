@@ -19,14 +19,14 @@ public class Encrypt_Decrypt {
                 if (y.charAt(0) == '1' && y.length() == 1) {
                     System.out.println("Enter a String");
                     x1 = n.nextLine();
-                    eod.StoreData(x1);
                     String Enc = eod.e(x1);
+                    eod.StoreData(x1 + "   -->   " + Enc);
                     System.out.println("Encrypted Text:\n\n" + Enc + "\n");
                 } else if (y.charAt(0) == '2' && y.length() == 1) {
                     System.out.println("Enter a String");
                     x1 = n.nextLine();
                     String Dec = eod.d(x1);
-                    eod.StoreData(Dec);
+                    eod.StoreData(Dec + "   <--   " + x1);
                     System.out.println("Decrypted Text:\n\n" + Dec + "\n");
                 } else if (y.charAt(0) == '3' && y.length() == 1) {
                     break;
